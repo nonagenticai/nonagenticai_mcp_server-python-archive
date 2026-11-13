@@ -29,7 +29,7 @@ dependencies = [
     # (src/broker/egress.py): exact pins; bump only with tests/test_builder_egress.py green.
     "httpx==0.28.1",
     "httpcore==1.0.9",
-    "fastmcp==4.1.4",
+    "fastmcp==4.1.8",
     # builtin provider (src/builtin, src/auth/keycloak.py), ported from main #41-#46
     "pyjwt[crypto]>=2.15.1",
     "cryptography>=47.0.0",
