@@ -38,7 +38,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-worker = ["kubernetes>=35.0.0,<36"]
+worker = ["kubernetes>=35.0.0,<38"]
 
 [dependency-groups]
 dev = [
