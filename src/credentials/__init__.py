@@ -1,0 +1,1 @@
+"""Worker-only credential adapters."""

@@ -1,0 +1,7 @@
+{
+  "message": "ok",
+  "container_name": "acme-widgets",
+  "nodes_created": 120,
+  "edges_created": 300,
+  "status": "success"
+}

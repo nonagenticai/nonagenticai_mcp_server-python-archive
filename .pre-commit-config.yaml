@@ -1,0 +1,75 @@
+# Pre-commit hooks for artifact-service
+# Install: pre-commit install -t pre-commit -t pre-push
+# Run all: pre-commit run --all-files
+
+repos:
+  # Ruff - extremely fast Python linter (replaces flake8, isort, etc.)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.7
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+        types_or: [python, pyi]
+      - id: ruff-format
+        types_or: [python, pyi]
+
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^tests/fixtures/legal/  # verbatim upstream HTML
+      - id: end-of-file-fixer
+        exclude: ^tests/fixtures/legal/
+      - id: check-yaml
+        args: [--unsafe]  # Allow custom tags
+      - id: check-added-large-files
+        args: [--maxkb=1024]
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  # Dockerfile linting
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.12.0
+    hooks:
+      - id: hadolint-docker
+        args: [--ignore, DL3008, --ignore, DL3013]  # Allow unpinned apt/pip
+
+  # Secret detection
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+      - id: detect-secrets
+        args: [--baseline, .secrets.baseline]
+        exclude: package-lock.json|uv.lock
+
+  # Type checking and tests - only on push (slower)
+  - repo: local
+    hooks:
+      - id: ty
+        name: ty type checking
+        entry: uv run ty check src/
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: pytest-unit
+        name: pytest unit tests
+        entry: uv run pytest tests/ -v --tb=short -x
+        language: system
+        types: [python]
+        pass_filenames: false
+        stages: [pre-push]
+
+      - id: pip-audit
+        name: pip-audit security scan (uv-export → pip-audit)
+        entry: scripts/pip-audit.sh
+        language: system
+        pass_filenames: false
+        stages: [pre-push]
+
+# Configuration for ci environments
+ci:
+  autofix_prs: false
+  autoupdate_schedule: monthly

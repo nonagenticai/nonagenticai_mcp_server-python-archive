@@ -1,0 +1,57 @@
+{
+  "container_name": "acme-widgets",
+  "manager": "uv",
+  "project_path": ".",
+  "dry_run": false,
+  "mode": "upgrade",
+  "results": [
+    {
+      "name": "ruff",
+      "previous_version": "0.16.9",
+      "new_version": "0.17.2",
+      "previous_constraint": ">=0.16.9",
+      "new_constraint": ">=0.16.9",
+      "success": true,
+      "error": null,
+      "fixed_cves": [],
+      "operation": "upgrade"
+    },
+    {
+      "name": "ty",
+      "previous_version": "0.0.31",
+      "new_version": "0.0.34",
+      "previous_constraint": ">=0.0.31",
+      "new_constraint": ">=0.0.31",
+      "success": true,
+      "error": null,
+      "fixed_cves": [],
+      "operation": "upgrade"
+    }
+  ],
+  "manifest_diffs": [
+    {
+      "path": "uv.lock",
+      "before": "version = 1\nrequires-python = \">=3.14\"\n\n[[package]]\nname = \"ruff\"\nversion = \"0.16.9\"\n\n[[package]]\nname = \"ty\"\nversion = \"0.0.31\"\n",
+      "after": "version = 1\nrequires-python = \">=3.14\"\n\n[[package]]\nname = \"ruff\"\nversion = \"0.17.2\"\n\n[[package]]\nname = \"ty\"\nversion = \"0.0.34\"\n"
+    }
+  ],
+  "commands_executed": [
+    [
+      "uv",
+      "lock",
+      "--upgrade-package",
+      "ruff",
+      "--upgrade-package",
+      "ty"
+    ]
+  ],
+  "stdout": "",
+  "stderr": "Resolved 12 packages in 311ms\nUpdated ruff v0.16.9 -> v0.17.2\nUpdated ty v0.0.31 -> v0.0.34\n",
+  "exit_code": 0,
+  "duration_seconds": 1.9,
+  "commit_url": null,
+  "commit_skip_reason": "commit_not_requested",
+  "pr_url": null,
+  "pr_number": null,
+  "cve_summary": null
+}

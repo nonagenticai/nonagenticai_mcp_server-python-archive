@@ -1,0 +1,7 @@
+{
+  "message": "committed",
+  "container_name": "acme-widgets",
+  "commit_sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "files_committed": 1,
+  "branch": "feat/widgets"
+}

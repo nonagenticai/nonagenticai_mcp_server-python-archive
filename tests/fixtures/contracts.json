@@ -1,0 +1,140 @@
+{
+  "services": [
+    {
+      "schema_version": 1,
+      "service_id": "30000000-0000-7000-8000-000000000001",
+      "version": 1,
+      "service_key": "service_1",
+      "destination_alias": "destination_1",
+      "license_app_key": "app_1",
+      "auth_adapter": "license_bearer",
+      "credential_profile_key": "credential_1",
+      "max_request_bytes": 4096,
+      "max_response_bytes": 8192
+    },
+    {
+      "schema_version": 1,
+      "service_id": "30000000-0000-7000-8000-000000000002",
+      "version": 1,
+      "service_key": "service_2",
+      "destination_alias": "destination_2",
+      "license_app_key": "app_2",
+      "auth_adapter": "license_bearer",
+      "credential_profile_key": "credential_2",
+      "max_request_bytes": 4096,
+      "max_response_bytes": 8192
+    }
+  ],
+  "operations": [
+    {
+      "schema_version": 1,
+      "operation_id": "40000000-0000-7000-8000-000000000001",
+      "version": 1,
+      "service": {
+        "id": "30000000-0000-7000-8000-000000000001",
+        "version": 1
+      },
+      "method": "GET",
+      "path_template": "/records",
+      "query_fields": [],
+      "header_fields": [],
+      "mappings": [],
+      "scope_rules": [],
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_projection": [
+        "/records"
+      ],
+      "redact_fields": [],
+      "effect": "read_only",
+      "idempotency": "none",
+      "max_retries": 0,
+      "timeout_seconds": 10,
+      "pagination_limit": 50,
+      "max_response_bytes": 8192
+    },
+    {
+      "schema_version": 1,
+      "operation_id": "40000000-0000-7000-8000-000000000002",
+      "version": 1,
+      "service": {
+        "id": "30000000-0000-7000-8000-000000000002",
+        "version": 1
+      },
+      "method": "GET",
+      "path_template": "/records",
+      "query_fields": [],
+      "header_fields": [],
+      "mappings": [],
+      "scope_rules": [],
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "output_schema": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "response_projection": [
+        "/records"
+      ],
+      "redact_fields": [],
+      "effect": "read_only",
+      "idempotency": "none",
+      "max_retries": 0,
+      "timeout_seconds": 10,
+      "pagination_limit": 50,
+      "max_response_bytes": 8192
+    }
+  ],
+  "tool": {
+    "schema_version": 1,
+    "tool_id": "20000000-0000-7000-8000-000000000001",
+    "tenant_id": "10000000-0000-7000-8000-000000000001",
+    "version": 1,
+    "public_name": "synthetic_tool",
+    "operation": "synthetic.synthetic_tool",
+    "description": "Synthetic fixture",
+    "runtime": "kata_python",
+    "entrypoint": "package.main:run",
+    "input_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "result_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "context_schema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "package_sha256": "7781c2b487d8bde6941ae9b769fde3635666ff51190802907376739cde93a0bd",
+    "runner_image_digest": "registry.example/runner@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "allowed_operations": [],
+    "operation_constraints": [],
+    "limits": {
+      "wall_seconds": 60,
+      "queue_seconds": 60,
+      "memory_mi": 256,
+      "cpu_millicores": 250,
+      "api_calls": 10,
+      "frame_bytes": 65536,
+      "output_bytes": 262144
+    },
+    "effect": "read_only"
+  }
+}

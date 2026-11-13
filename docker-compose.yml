@@ -1,0 +1,50 @@
+# Disposable local catalog environment. Alembic is the only schema producer.
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: mcp_owner
+      POSTGRES_PASSWORD: ${MCP_LOCAL_DB_PASSWORD:?set MCP_LOCAL_DB_PASSWORD}
+      POSTGRES_DB: mcp_catalog
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mcp_owner -d mcp_catalog"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    volumes:
+      - catalog_db:/var/lib/postgresql
+  migrate:
+    build: .
+    image: nonagenticai-mcp-catalog:local
+    command: ["sh", "-c", "alembic upgrade head && python -m src.platform.seed"]
+    environment:
+      DATABASE_URL: postgresql://mcp_owner:${MCP_LOCAL_DB_PASSWORD}@db:5432/mcp_catalog
+      # Unset: the seed publishes services and operations only (tools need a pinned runner image).
+      MCP_RUNNER_IMAGE_DIGEST: ${MCP_RUNNER_IMAGE_DIGEST:-}
+      MCP_APPROVED_RUNNER_IMAGES: ${MCP_APPROVED_RUNNER_IMAGES:-[]}
+    depends_on:
+      db:
+        condition: service_healthy
+  mcp:
+    build: .
+    image: nonagenticai-mcp-catalog:local
+    environment:
+      DATABASE_URL: ${MCP_RUNTIME_DATABASE_URL:?set MCP_RUNTIME_DATABASE_URL after granting the runtime role}
+      LICENSE_INTROSPECT_URL: ${LICENSE_INTROSPECT_URL:?set LICENSE_INTROSPECT_URL}
+      MCP_LICENSE_APP_KEY: ${MCP_LICENSE_APP_KEY:?set MCP_LICENSE_APP_KEY}
+      MCP_LICENSE_ALLOW_HTTP: ${MCP_LICENSE_ALLOW_HTTP:-false}
+      LICENSE_CACHE_TTL_SECONDS: ${LICENSE_CACHE_TTL_SECONDS:-30}
+      MCP_ADMIN_KEY_FILE: /run/mcp/admin-key
+      MCP_ADMIN_TENANT_IDS: ${MCP_ADMIN_TENANT_IDS:?set the explicit tenant UUIDv7 JSON allowlist}
+    volumes:
+      - ${MCP_ADMIN_KEY_FILE:?set the local admin-key file path}:/run/mcp/admin-key:ro
+    ports:
+      - "127.0.0.1:8033:8033"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+volumes:
+  catalog_db:

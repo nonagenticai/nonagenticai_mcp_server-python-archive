@@ -1,0 +1,14 @@
+{
+  "test_id": "t-1",
+  "container_name": "acme-widgets",
+  "test_name": "suite",
+  "language": "python",
+  "test_type": "unit",
+  "exit_code": 0,
+  "stdout": "3 passed",
+  "stderr": "",
+  "execution_time_ms": 1200.0,
+  "success": true,
+  "timestamp": "2026-10-25T00:00:00Z",
+  "container_id": "c1"
+}

@@ -1,0 +1,8 @@
+{
+  "valid": true,
+  "class_name": "App",
+  "found_in": [
+    "src/app.py"
+  ],
+  "language_supported": true
+}

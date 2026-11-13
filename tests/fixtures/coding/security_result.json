@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "task_id": "task-1",
+  "result": {
+    "container_name": "acme-widgets",
+    "scan_timestamp": "2026-10-25T00:00:00Z",
+    "scan_duration_seconds": 1.0,
+    "total_files_scanned": 10,
+    "total_vulnerabilities": 0,
+    "critical_count": 0,
+    "high_count": 0,
+    "medium_count": 0,
+    "low_count": 0,
+    "info_count": 0,
+    "overall_risk_score": 0.0,
+    "security_grade": "A",
+    "scan_degraded": false,
+    "degraded_reasons": [],
+    "file_results": [],
+    "affected_files": [],
+    "cve_references": []
+  }
+}

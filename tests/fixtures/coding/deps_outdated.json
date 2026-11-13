@@ -1,0 +1,26 @@
+[
+  {
+    "name": "ruff",
+    "version": "0.16.9",
+    "manager": "uv",
+    "is_dev": true,
+    "source": "pyproject.toml",
+    "specifier": ">=0.16.9",
+    "extras": [],
+    "ecosystem": "pypi",
+    "current_version": "0.16.9",
+    "latest_version": "0.17.2"
+  },
+  {
+    "name": "ty",
+    "version": "0.0.31",
+    "manager": "uv",
+    "is_dev": true,
+    "source": "pyproject.toml",
+    "specifier": ">=0.0.31",
+    "extras": [],
+    "ecosystem": "pypi",
+    "current_version": "0.0.31",
+    "latest_version": "0.0.34"
+  }
+]

@@ -1,0 +1,119 @@
+{
+ "Oid": 113155,
+ "IsArchival": false,
+ "IsArchivalImport": false,
+ "DuplicateChar": null,
+ "BackwardPowerDate": "",
+ "PublicationDateWWW": "2026-09-11T10:58:09.557",
+ "Subject": "w sprawie udzielenia bonifikaty od ceny sprzedaży lokali mieszkalnych stanowiących własność Gminy Kąty Wrocławskie w drodze bezprzetargowej na rzecz dotychczasowych najemców",
+ "CaseNumber": "XXX/303/2026",
+ "PublisherGenetive": "Rady Miejskiej w Kątach Wrocławskich",
+ "ActDate": "2026-08-27T00:00:00",
+ "LegalActType": "Uchwała",
+ "ActType": null,
+ "PublicationDate": "2026-09-11T10:41:24.967",
+ "IsTechnicalPosition": false,
+ "Position": 4019,
+ "HasExpired": false,
+ "BindingDateFrom": "",
+ "BindingDateTo": "",
+ "Year": 2026,
+ "JournalNumber": 0,
+ "Attachments": [
+  {
+   "DownloadByHadler": false,
+   "FileName": "akt.pdf",
+   "Oid": 463198,
+   "FileSizeBytes": 952830,
+   "Extension": "PDF",
+   "DisplayName": "PDF ogłoszony (930,5KB PDF)",
+   "SortOrder": 13,
+   "IsOryginal": false,
+   "IconClass": "linkPdf",
+   "Type": "PDFPublished",
+   "IsAttachment": false,
+   "Url": "WDU_D\\2026\\4019/akt.pdf"
+  },
+  {
+   "DownloadByHadler": true,
+   "FileName": "pozycja.xml",
+   "Oid": 0,
+   "FileSizeBytes": 13870,
+   "Extension": null,
+   "DisplayName": "POZYCJA.XML (13,5KB )",
+   "SortOrder": 5,
+   "IsOryginal": false,
+   "IconClass": "linkXml",
+   "Type": "PositionXML",
+   "IsAttachment": false,
+   "Url": "GetFileXml.ashx?signature=True&year=2026&book=0&position=4019&letter=&filekind=pozycja"
+  },
+  {
+   "DownloadByHadler": true,
+   "FileName": "wiza.xml",
+   "Oid": 463196,
+   "FileSizeBytes": 9897,
+   "Extension": "XML",
+   "DisplayName": "WIZA.XML (9,7KB XML)",
+   "SortOrder": 4,
+   "IsOryginal": false,
+   "IconClass": "linkXml",
+   "Type": "WizaXML",
+   "IsAttachment": false,
+   "Url": "GetFileXml.ashx?signature=True&id=463196&year=2026&book=0&position=4019"
+  },
+  {
+   "DownloadByHadler": false,
+   "FileName": "wiza.html",
+   "Oid": 463197,
+   "FileSizeBytes": 3732,
+   "Extension": "HTML",
+   "DisplayName": "WIZA.HTML (3,6KB HTML)",
+   "SortOrder": 3,
+   "IsOryginal": false,
+   "IconClass": "linkHtml",
+   "Type": "WizaHTML",
+   "IsAttachment": false,
+   "Url": "WDU_D\\2026\\4019/wiza.html"
+  }
+ ],
+ "NdapMode": false,
+ "ActRelations": [],
+ "Keywords": [
+  {
+   "Oid": 5,
+   "Name": "zasady gospodarki nieruchomościami",
+   "LegalActCount": 2996,
+   "IsReferenceKeyword": false
+  }
+ ],
+ "Publishers": [
+  {
+   "Oid": 5,
+   "Name": "Rada Miejska w Kątach Wrocławskich"
+  }
+ ],
+ "ActTypeOid": 1,
+ "JournalShortName": "DZ. URZ. WOJ.",
+ "ActStatus": {
+  "IsInvalid": false,
+  "IsPartialInvalid": false,
+  "Description": "",
+  "ShowCheckDateMsg": false
+ },
+ "ActPositionNumber": "2026.4019",
+ "ShowHtmlContent": false,
+ "PdfUrl": "GetActPdf.ashx?year=2026&book=0&position=4019",
+ "PdfDisplayName": "POBIERZ PDF (930,5KB)",
+ "Publisher": null,
+ "ActTypeId": 0,
+ "PublishersList": [],
+ "PublishersListFlat": null,
+ "PdfBookUrlList": [
+  {
+   "Url": "GetActPdf.ashx?year=2026&book=0&position=4019",
+   "Name": "Akt.pdf"
+  }
+ ],
+ "Title": "Uchwała nr XXX/303/2026 Rady Miejskiej w Kątach Wrocławskich z dnia 27 sierpnia 2026 r. w sprawie udzielenia bonifikaty od ceny sprzedaży lokali mieszkalnych stanowiących własność Gminy Kąty Wrocławskie w drodze bezprzetargowej na rzecz dotychczasowych najemców"
+}

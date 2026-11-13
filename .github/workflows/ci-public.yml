@@ -1,0 +1,184 @@
+# CI for a PUBLIC repository — self-contained, GitHub-hosted runners.
+#
+# ⛔ Why this file exists rather than the private archetype it replaces:
+#   1. A public repo CANNOT consume the private fleet reusable workflows
+#      — a public workflow cannot read a private repo. The run does not fail; it dies at
+#      startup with zero jobs.
+#   2. A public repo CANNOT use the ARC self-hosted pools (`allows_public_repositories`
+#      is false on both groups, and must stay false: a fork PR can edit `runs-on`). A job
+#      that asks for one sits QUEUED forever, invisible to check-failures.sh.
+#   3. GitHub-hosted standard runners are free and unlimited on public repos.
+#
+# Every job is gated on `!github.event.repository.private`, so this file can land while the
+# repo is private (jobs report "skipped", never red) and activates with zero edits at the
+# flip. The first real run is therefore the one immediately after it.
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+permissions:
+  contents: read
+
+env:
+  UV_VERSION: "0.9.5"
+
+jobs:
+  secret-scan:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - name: install betterleaks 1.10.1 (pinned, sha256-verified)
+        run: |
+          set -euo pipefail
+          version=1.10.1
+          sha=c174b42d7aa60caf58c0c3e555c0e4bed01fe6b0d99a412bce777b5af4ce913e
+          curl -fsSL -o "$RUNNER_TEMP/betterleaks.tgz" \
+            "https://github.com/betterleaks/betterleaks/releases/download/v${version}/betterleaks_${version}_linux_x64.tar.gz"
+          echo "${sha}  $RUNNER_TEMP/betterleaks.tgz" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/betterleaks.tgz" -C "$RUNNER_TEMP" betterleaks
+      - name: scan the tree
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/betterleaks" dir --redact --exit-code 1 --no-banner \
+            --config=.betterleaks.toml \
+            --gitleaks-ignore-path .betterleaksignore .
+
+  no-private-refs:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+      - name: scan tracked files
+        run: bash scripts/ci/no-private-refs.sh
+
+  checks:
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
+      # --all-extras is load-bearing here: `kubernetes` lives in the `worker` extra and
+      # tests/test_kata_backend.py imports it unconditionally. A bare `uv sync` collects
+      # 888 tests and then errors on that module — measured on this repo, 2026-11-13.
+      #
+      # No service container: the suite starts its own disposable Postgres
+      # (tests/conftest.py ignores DATABASE_URL by design).
+      - name: install (locked, all extras)
+        run: uv sync --frozen --all-extras
+
+      - name: ruff check
+        run: uv run ruff check .
+
+      - name: ruff format
+        run: uv run ruff format --check .
+
+      # The repo gates types via `ty check src` in its own push hook; keep that gate.
+      - name: types
+        run: uv run --with ty ty check src
+
+      - name: pytest
+        run: uv run pytest -q
+
+      - name: pip-audit
+        run: |
+          set -euo pipefail
+          uv export --frozen --all-extras --no-emit-project -o "$RUNNER_TEMP/requirements.txt"
+          # pyjwt PYSEC-2025-183 has no fixed release yet — fleet-standard ignore.
+          uvx --from pip-audit pip-audit -r "$RUNNER_TEMP/requirements.txt" \
+            --ignore-vuln PYSEC-2025-183
+
+  # Build — and on main publish — the API, worker and runner images. OFF by default:
+  # enable per repo with the repository variable `PUBLISH_IMAGE=true`.
+  image:
+    if: ${{ !github.event.repository.private && vars.PUBLISH_IMAGE == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - image: nonagenticai_mcp_server
+            dockerfile: Dockerfile
+            target: ""
+            smoke: >-
+              MCP_VERIFY_POSTGRES_IMAGE=postgres:18
+              uv run --frozen --no-dev python -m scripts.verify_catalog_image --image "$IMAGE_REF"
+          - image: nonagenticai_mcp_server_worker
+            dockerfile: Dockerfile
+            target: worker
+            smoke: >-
+              docker run --rm --entrypoint python "$IMAGE_REF" -c "import src.execution.worker"
+          - image: nonagenticai_mcp_server_runner
+            dockerfile: runner/Dockerfile
+            target: ""
+            smoke: >-
+              uv run --frozen --no-dev python -m scripts.verify_runner_image --image "$IMAGE_REF"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: ${{ env.UV_VERSION }}
+          enable-cache: true
+
+      - name: install (locked, all extras)
+        run: uv sync --frozen --all-extras
+
+      - name: build
+        env:
+          TARGET: ${{ matrix.target }}
+          DOCKERFILE: ${{ matrix.dockerfile }}
+        run: |
+          set -euo pipefail
+          if [ -n "$TARGET" ]; then
+            docker build --file "$DOCKERFILE" --target "$TARGET" --tag app:ci .
+          else
+            docker build --file "$DOCKERFILE" --tag app:ci .
+          fi
+          ref="${{ matrix.image }}:ci"
+          docker tag app:ci "$ref"
+          echo "IMAGE_REF=$ref" >> "$GITHUB_ENV"
+
+      # The smoke command goes through `env:` and is expanded by `bash -c`, never
+      # interpolated into the run block: `${{ }}` inline lands inside the shell's own
+      # quotes and collapses the inner ones (measured on `licenses`).
+      - name: smoke
+        env:
+          SMOKE: ${{ matrix.smoke }}
+        run: |
+          set -euo pipefail
+          bash -c "$SMOKE"
+
+      - name: push to ghcr.io (main only)
+        if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch') }}
+        run: |
+          set -euo pipefail
+          ref="ghcr.io/${{ github.repository_owner }}/${{ matrix.image }}"
+          echo "${{ github.token }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+          sha="sha-${GITHUB_SHA::7}"
+          run="$(printf 'main-%06d' "${{ github.run_number }}")"
+          for tag in "$sha" "$run" latest; do
+            docker tag app:ci "$ref:$tag"
+            docker push "$ref:$tag"
+          done
+          echo "pushed $ref:$sha $ref:$run $ref:latest"

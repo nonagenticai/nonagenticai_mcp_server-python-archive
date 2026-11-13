@@ -1,0 +1,104 @@
+{
+ "LegalActs": [
+  {
+   "PublicationDate": "2026-09-11T10:41:24.967",
+   "ActDate": "2026-08-27T00:00:00",
+   "PdfUrl": "GetActPdf.ashx?year=2026&book=0&position=4019",
+   "PdfDisplayName": null,
+   "Subject": "w sprawie udzielenia bonifikaty od ceny sprzedaży lokali mieszkalnych stanowiących własność Gminy Kąty Wrocławskie w drodze bezprzetargowej na rzecz dotychczasowych najemców",
+   "Publisher": "Rady Miejskiej w Kątach Wrocławskich",
+   "CaseNumber": "XXX/303/2026",
+   "HasExpired": false,
+   "LegalActType": "Uchwała",
+   "ActTypeId": 1,
+   "PublishersList": [
+    {
+     "Name": "Rady Miejskiej w Kątach Wrocławskich",
+     "Oid": 5
+    }
+   ],
+   "PublishersListFlat": "rada miejska w kątach wrocławskich",
+   "PdfBookUrlList": [
+    {
+     "Url": "GetActPdf.ashx?year=2026&book=0&position=4019",
+     "Name": "Akt.pdf"
+    }
+   ],
+   "Title": "Uchwała nr XXX/303/2026 Rady Miejskiej w Kątach Wrocławskich z dnia 27 sierpnia 2026 r. w sprawie udzielenia bonifikaty od ceny sprzedaży lokali mieszkalnych stanowiących własność Gminy Kąty Wrocławskie w drodze bezprzetargowej na rzecz dotychczasowych najemców",
+   "IsTechnicalPosition": false,
+   "Oid": 113155,
+   "Position": 4019,
+   "Year": 2026,
+   "DuplicateChar": null,
+   "JournalNumber": 0
+  },
+  {
+   "PublicationDate": "2026-09-04T10:14:36.417",
+   "ActDate": "2026-08-27T00:00:00",
+   "PdfUrl": "GetActPdf.ashx?year=2026&book=0&position=3896",
+   "PdfDisplayName": null,
+   "Subject": "w sprawie zmiany uchwały nr XII/64/07 z dnia 29.10.2007 r. w sprawie opłaty targowej na terenie Gminy Bardo",
+   "Publisher": "Rady Miejskiej w Bardzie",
+   "CaseNumber": "XXXVII/181/2026",
+   "HasExpired": false,
+   "LegalActType": "Uchwała",
+   "ActTypeId": 1,
+   "PublishersList": [
+    {
+     "Name": "Rady Miejskiej w Bardzie",
+     "Oid": 457
+    }
+   ],
+   "PublishersListFlat": "rada miejska w bardzie",
+   "PdfBookUrlList": [
+    {
+     "Url": "GetActPdf.ashx?year=2026&book=0&position=3896",
+     "Name": "Akt.pdf"
+    }
+   ],
+   "Title": "Uchwała nr XXXVII/181/2026 Rady Miejskiej w Bardzie z dnia 27 sierpnia 2026 r. w sprawie zmiany uchwały nr XII/64/07 z dnia 29.10.2007 r. w sprawie opłaty targowej na terenie Gminy Bardo",
+   "IsTechnicalPosition": false,
+   "Oid": 113032,
+   "Position": 3896,
+   "Year": 2026,
+   "DuplicateChar": null,
+   "JournalNumber": 0
+  },
+  {
+   "PublicationDate": "2026-07-14T10:53:25.797",
+   "ActDate": "2026-06-30T00:00:00",
+   "PdfUrl": "GetActPdf.ashx?year=2026&book=0&position=3300",
+   "PdfDisplayName": null,
+   "Subject": "w sprawie określenia zasad ustalania i poboru, terminów płatności i wysokości stawek opłaty targowej, zarządzenia jej poboru w drodze inkasa oraz określenia inkasentów i wysokości wynagrodzenia za inkaso",
+   "Publisher": "Rady Miasta Lubań",
+   "CaseNumber": "XXXIV/193/2026",
+   "HasExpired": false,
+   "LegalActType": "Uchwała",
+   "ActTypeId": 1,
+   "PublishersList": [
+    {
+     "Name": "Rady Miasta Lubań",
+     "Oid": 125
+    }
+   ],
+   "PublishersListFlat": "rada miasta lubań",
+   "PdfBookUrlList": [
+    {
+     "Url": "GetActPdf.ashx?year=2026&book=0&position=3300",
+     "Name": "Akt.pdf"
+    }
+   ],
+   "Title": "Uchwała nr XXXIV/193/2026 Rady Miasta Lubań z dnia 30 czerwca 2026 r. w sprawie określenia zasad ustalania i poboru, terminów płatności i wysokości stawek opłaty targowej, zarządzenia jej poboru w drodze inkasa oraz określenia inkasentów i wysokości wynagrodzenia za inkaso",
+   "IsTechnicalPosition": false,
+   "Oid": 112434,
+   "Position": 3300,
+   "Year": 2026,
+   "DuplicateChar": null,
+   "JournalNumber": 0
+  }
+ ],
+ "PageNumber": 1,
+ "PageSize": 2,
+ "TotalItems": 1243,
+ "HasMoreRows": true
+}

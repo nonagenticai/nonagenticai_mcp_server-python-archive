@@ -1,0 +1,21 @@
+{
+  "paths": [
+    "../main.py",
+    "/main.py",
+    "C:/main.py",
+    "a\\main.py",
+    "a//b",
+    "a/./b",
+    "a/../b",
+    "a/",
+    "//host/main.py",
+    "a\u0000b",
+    "cafe\u0301.py"
+  ],
+  "entrypoints": [
+    "package.main",
+    "package.main:run()",
+    "/tmp/main:run",
+    "package.main:run.extra"
+  ]
+}

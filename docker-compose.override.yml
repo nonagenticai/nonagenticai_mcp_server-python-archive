@@ -1,0 +1,4 @@
+services:
+  mcp:
+    volumes:
+      - ./src:/app/src:ro

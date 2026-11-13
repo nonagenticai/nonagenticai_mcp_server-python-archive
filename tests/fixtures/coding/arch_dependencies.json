@@ -1,0 +1,8 @@
+[
+  {
+    "component": "api",
+    "depends_on": [
+      "db"
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "path": "src/app.py",
+  "container_name": "acme-widgets",
+  "bytes_written": 12,
+  "message": "ok"
+}

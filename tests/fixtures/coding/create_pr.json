@@ -1,0 +1,7 @@
+{
+  "status": "success",
+  "message": "created",
+  "pr_number": 7,
+  "pr_url": "https://github.com/acme/widgets/pull/7",
+  "pr_status": "open"
+}

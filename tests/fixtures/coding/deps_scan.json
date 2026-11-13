@@ -1,0 +1,21 @@
+{
+  "codebase_id": "acme-widgets",
+  "generated_at": "2026-10-25T00:00:00Z",
+  "packages": [
+    {
+      "name": "requests",
+      "version": "2.32.0"
+    }
+  ],
+  "vulnerabilities": [],
+  "risk_score": 0.0,
+  "summary": {
+    "total_packages": 1,
+    "vulnerable_packages": 0,
+    "total_vulnerabilities": 0,
+    "critical_vulnerabilities": 0,
+    "high_vulnerabilities": 0,
+    "moderate_vulnerabilities": 0,
+    "low_vulnerabilities": 0
+  }
+}

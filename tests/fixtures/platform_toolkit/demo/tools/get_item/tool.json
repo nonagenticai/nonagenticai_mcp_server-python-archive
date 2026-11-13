@@ -1,0 +1,31 @@
+{
+  "tool_id": "20000000-0000-7000-8000-00000000d001",
+  "public_name": "demo_get_item",
+  "operation": "demo.get_item",
+  "description": "Fixture tool",
+  "entrypoint": "main:run",
+  "input_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "result_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "context_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "effect": "read_only",
+  "limits": {
+    "wall_seconds": 30,
+    "api_calls": 5
+  },
+  "allowed_operations": [
+    "get_item",
+    "list_items"
+  ]
+}

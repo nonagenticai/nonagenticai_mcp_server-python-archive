@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "overall_score": 91.0,
+  "grade": "A",
+  "inconclusive": false,
+  "partial": false,
+  "tools_attempted": [
+    "ruff"
+  ],
+  "tools_succeeded": [
+    "ruff"
+  ],
+  "tools_failed": [],
+  "gate_checks": [],
+  "recommendations": [],
+  "commit_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "source": "stored"
+}

@@ -1,0 +1,3 @@
+# Captured upstream legal HTML is byte-exact by design (trailing whitespace
+# included); whitespace rules must not rewrite or flag it.
+tests/fixtures/legal/*.html -whitespace

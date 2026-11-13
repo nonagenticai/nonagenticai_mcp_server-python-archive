@@ -1,0 +1,10 @@
+{
+  "service_id": "30000000-0000-7000-8000-00000000d001",
+  "service_key": "demo",
+  "destination_alias": "demo_backend",
+  "license_app_key": "demo",
+  "auth_adapter": "license_bearer",
+  "credential_profile_key": "demo",
+  "max_request_bytes": 4096,
+  "max_response_bytes": 8192
+}

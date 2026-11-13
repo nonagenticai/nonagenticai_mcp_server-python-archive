@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "message": "SBOM generated",
+  "result": {
+    "container_name": "acme-widgets",
+    "image_ref": "x:latest",
+    "format": "cyclonedx-json",
+    "generated_at": "2026-10-25T00:00:00Z",
+    "total_packages": 1,
+    "packages": [
+      {
+        "name": "requests",
+        "version": "2.32.0",
+        "type": "python"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "single",
+    "files": [
+      {
+        "path": "main.py",
+        "content": "async def run(inputs, ctx):\n    return {}\n"
+      }
+    ],
+    "entrypoint": "main:run",
+    "sha256": "7a77ec4fd13e6000d7f2c289e767b42b181213f29ae8e9b72a05279f5f0871ad"
+  },
+  {
+    "name": "multi_unicode",
+    "files": [
+      {
+        "path": "package/main.py",
+        "content": "async def run(inputs, ctx):\n    return {}\n"
+      },
+      {
+        "path": "package/__init__.py",
+        "content": ""
+      },
+      {
+        "path": "data/message.txt",
+        "content": "café ☕\n"
+      }
+    ],
+    "entrypoint": "package.main:run",
+    "sha256": "7781c2b487d8bde6941ae9b769fde3635666ff51190802907376739cde93a0bd"
+  }
+]

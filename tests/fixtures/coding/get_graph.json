@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "message": "",
+  "graph": {
+    "container_name": "acme-widgets",
+    "name": "widgets",
+    "node_count": 120,
+    "edge_count": 300,
+    "language": "python",
+    "status": "ready"
+  }
+}

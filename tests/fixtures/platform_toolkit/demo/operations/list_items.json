@@ -1,0 +1,22 @@
+{
+  "operation_id": "40000000-0000-7000-8000-00000000d002",
+  "method": "GET",
+  "path_template": "/items",
+  "input_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "response_projection": [
+    "/items"
+  ],
+  "effect": "read_only",
+  "timeout_seconds": 10,
+  "pagination_limit": 50,
+  "max_response_bytes": 8192
+}

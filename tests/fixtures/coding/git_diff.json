@@ -1,0 +1,13 @@
+{
+  "container_name": "acme-widgets",
+  "base": "HEAD",
+  "base_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "compared_to": "working_tree",
+  "files": [],
+  "untracked_files": [],
+  "diff": "",
+  "diff_bytes": 0,
+  "truncated": false,
+  "message": "ok",
+  "context_lines": 3
+}

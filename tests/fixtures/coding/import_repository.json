@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "message": "imported",
+  "request_id": "req-1",
+  "container": {
+    "container_name": "acme-widgets",
+    "codebase_path": "/workspace",
+    "repo_url": "https://github.com/acme/widgets",
+    "branch": "main",
+    "status": "running",
+    "github_access_token": "ghs_SECRET_TOKEN",
+    "api_endpoint": "http://workspace.internal"
+  },
+  "commit_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

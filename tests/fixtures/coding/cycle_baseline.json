@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "cycles": [
+    [
+      "a",
+      "b"
+    ]
+  ],
+  "grounded": true,
+  "graph_built": true,
+  "component_count": 4,
+  "node_count": 120
+}

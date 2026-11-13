@@ -1,0 +1,21 @@
+{
+  "test_id": "t-1",
+  "success": true,
+  "stdout": "3 passed",
+  "stderr": "",
+  "exit_code": 0,
+  "execution_time": 1.2,
+  "language": "python",
+  "test_type": "unit",
+  "container_name": "acme-widgets",
+  "coverage_data": null,
+  "quality_report": null,
+  "error": null,
+  "tests_run": 3,
+  "tests_passed": 3,
+  "tests_failed": 0,
+  "no_tests_run": false,
+  "created_at": "2026-10-25T00:00:00Z",
+  "security_level": "high",
+  "test_metadata": null
+}

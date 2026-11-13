@@ -1,0 +1,8 @@
+{
+  "valid": true,
+  "function_name": "main",
+  "found_in": [
+    "src/app.py"
+  ],
+  "language_supported": true
+}

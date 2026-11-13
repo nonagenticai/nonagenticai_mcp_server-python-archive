@@ -1,0 +1,13 @@
+{
+  "path": "/workspace/pyproject.toml",
+  "type": "file",
+  "content": "[project]\nname = \"widgets\"\nversion = \"0.1.0\"\nrequires-python = \">=3.14\"\n\n[dependency-groups]\ndev = [\"ruff>=0.16.9\", \"ty>=0.0.31\"]\n",
+  "entries": null,
+  "resolved_path": "/workspace/pyproject.toml",
+  "lines_total": 7,
+  "start_line": null,
+  "end_line": null,
+  "sha256": "9f2c1e5a7b3d4c6e8f0a1b2c3d4e5f60718293a4b5c6d7e8f9a0b1c2d3e4f506",
+  "size_bytes": 131,
+  "truncated": false
+}

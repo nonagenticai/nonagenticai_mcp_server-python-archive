@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "e1",
+      "source": "n1",
+      "target": "n2",
+      "type": "IMPORTS",
+      "properties": {}
+    }
+  ],
+  "pagination": {
+    "page": 1,
+    "limit": 20,
+    "total": 1
+  }
+}

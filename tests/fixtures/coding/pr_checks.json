@@ -1,0 +1,17 @@
+{
+  "pr_number": 7,
+  "head_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "verdict": "passed",
+  "total": 2,
+  "completed": 2,
+  "succeeded": 2,
+  "failed": 0,
+  "failed_names": [],
+  "checks": [
+    {
+      "name": "ci",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ]
+}
